@@ -38,15 +38,17 @@
     {
         die('Erreur : ' . $e->getMessage());
     }
-
     $reponse = $bdd->query('SELECT * FROM minichat ORDER BY id DESC LIMIT 0, 10');
-
     while ($donnees = $reponse->fetch())
     {
     ?>
 
-    <?php echo $donnees['pseudo']; ?> :
-    <?php echo $donnees['message']; ?><br>
+
+    <div class="message">
+            <p><?php echo htmlspecialchars($donnees['pseudo']); ?> :
+            <?php echo htmlspecialchars($donnees['message']); ?></p>
+          </div>
+
     <?php
 }
 $reponse->closeCursor();
